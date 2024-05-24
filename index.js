@@ -106,7 +106,7 @@ async function question4() {
     return handleAnswer(answers.question_4 == 'array[array.length - 1]');
 }
 
-async function question_5() {
+async function question5() {
     const answers = await inquirer.prompt({
         name: 'question_5',
         type: 'list',
@@ -120,6 +120,49 @@ async function question_5() {
     return handleAnswer(answers.question_5 == 'let obj = {name: "John", age: 30};');
 }
 
+async function question6() {
+    const answers = await inquirer.prompt({
+        name: 'question_6',
+        type: 'list',
+        message: 'How do you remove an element from a specific index in an array?\n',
+        choices: ['array.pop(index)',
+            'array.remove(index)', 
+            'array.splice(index, 1)', 
+            'array.delete(index)'
+        ],
+    });
+    return handleAnswer(answers.question_6 == 'array.splice(index, 1)');
+}
+
+
+async function question7() {
+    const answers= await inquirer.prompt({
+        name: 'question_7',
+        type: 'list',
+        message: 'What is the correct way to write a JavaScript comment?\n',
+        choices: ['//This is a comment',
+            '<!--This is a comment-->',
+            '/*This is a comment*/',
+            'This is a comment'
+        ],
+    });
+    return handleAnswer(answers.question_7 == '//This is a comment');
+}
+
+
+async function question8() {
+    const answers= await inquirer.prompt({
+        name: 'question_8',
+        type: 'list',
+        message: 'What is the output of the following code: console.log([1, 2, 3].map(num => num * 2));\n',
+        choices: ['[2, 4, 6]',
+            '[1, 2, 3]',
+            '[1, 2, 3, 1, 2, 3]',
+            '[0.5, 1, 1.5]'
+        ],
+    });
+    return handleAnswer(answers.question_8 == '[2, 4, 6]');
+}
 
 async function handleAnswer(correct) {
     const spinner = createSpinner('Checking answer...').start();
@@ -150,5 +193,8 @@ await question1();
 await question2();
 await question3();
 await question4();
-await question_5();
+await question5();
+await question6();
+await question7();
+await question8();
 await winner();
