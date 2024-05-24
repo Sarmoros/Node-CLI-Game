@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 import chalk from 'chalk';
 import inquirer from 'inquirer';
 import gradient from 'gradient-string';
@@ -45,19 +44,52 @@ async function askName() {
     playerName = answers.player_name;
 }
 
+
 async function question1() {
     const answers = await inquirer.prompt({
         name: 'question_1',
         type: 'list',
-        message: 'Javascript was created in 10 days then released on\n',
-        choices: ['May 23rd, 1995',
-            'Nov 24th, 1995',
-            'Dec 4th, 1995',
-            'Sep 1st, 1996',
+        message: 'How do you create a function in JavaScript?\n',
+        choices: ['function myFunction() {}',
+            'create function myFunction() {}',
+            'make function myFunction() {}',
+            'define myFunction() {}',
         ],
     });
 
-    return handleAnswer(answers.question_1 == 'Dec 4th, 1995');
+    return handleAnswer(answers.question_1 == 'function myFunction() {}');
+}
+
+
+async function question2() {
+    const answers = await inquirer.prompt({
+        name: 'question_2',
+        type: 'list',
+        message: 'How do you find the length of a string in JavaScript?\n',
+        choices: ['string.size',
+            'string.length',
+            'string.count',
+            'string.index',
+        ],
+    });
+
+    return handleAnswer(answers.question_2 == 'string.length');
+}
+
+
+async function question3() {
+    const answers = await inquirer.prompt({
+        name: 'question_3',
+        type: 'list',
+        message: 'Which method is used to add an element to the end of an array?\n',
+        choices: ['push()',
+            'pop()',
+            'shift()',
+            'unshift()',
+        ],
+    });
+
+    return handleAnswer(answers.question_3 == 'push()');
 }
 
 
@@ -87,4 +119,6 @@ function winner() {
 await welcome();
 await askName();
 await question1();
+await question2();
+await question3();
 await winner();
