@@ -139,14 +139,14 @@ async function question7() {
     const answers= await inquirer.prompt({
         name: 'question_7',
         type: 'list',
-        message: 'What is the correct way to write a JavaScript comment?\n',
-        choices: ['//This is a comment',
-            '<!--This is a comment-->',
-            '/*This is a comment*/',
-            'This is a comment'
+        message: 'What is the purpose of the async keyword in JavaScript?\n',
+        choices: ['To declare a function that returns a promise and can use await',
+            'To pause the execution of a function',
+            'To create a new thread for asynchronous operations',
+            'To handle errors in asynchronous code'
         ],
     });
-    return handleAnswer(answers.question_7 == '//This is a comment');
+    return handleAnswer(answers.question_7 == 'To declare a function that returns a promise and can use await');
 }
 
 
@@ -162,6 +162,36 @@ async function question8() {
         ],
     });
     return handleAnswer(answers.question_8 == '[2, 4, 6]');
+}
+
+
+async function question9() {
+    const answers= await inquirer.prompt({
+        name: 'question_9',
+        type: 'list',
+        message: 'Which method would you use to serialize a JavaScript object into a JSON string?\n',
+        choices: ['JSON.parse',
+            'JSON.stringify',
+            'JSON.encode',
+            'JSON.convert'
+        ],
+    });
+    return handleAnswer(answers.question_9 == 'JSON.stringify');
+}
+
+
+async function question10(){
+    const answers= await inquirer.prompt({
+        name: 'question_10',
+        type: 'list',
+        message: 'Which JavaScript method is used to find the first element that satisfies a condition in an array?\n',
+        choices: ['array.prototype.find()',
+            'array.prototype.filter()',
+            'array.prototype.search()',
+            'array.prototype.indexOf()'
+        ],
+    });
+    return handleAnswer(answers.question_10 == 'array.prototype.find()');
 }
 
 async function handleAnswer(correct) {
@@ -197,4 +227,6 @@ await question5();
 await question6();
 await question7();
 await question8();
+await question9();
+await question10();
 await winner();
