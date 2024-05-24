@@ -92,6 +92,34 @@ async function question3() {
     return handleAnswer(answers.question_3 == 'push()');
 }
 
+async function question4() {
+    const answers = await inquirer.prompt({
+        name: 'question_4',
+        type: 'list',
+        message: 'How can you get the last element of an array in JavaScript?\n',
+        choices: ['array.last()',
+            'array[-1]',
+            'array[array.length - 1]',
+            'array.end()',
+        ],
+    });
+    return handleAnswer(answers.question_4 == 'array[array.length - 1]');
+}
+
+async function question_5() {
+    const answers = await inquirer.prompt({
+        name: 'question_5',
+        type: 'list',
+        message: 'What is the correct way to write a Javascript object?\n',
+        choices: ['let obj = {name: "John", age: 30};',
+            'let obj = (name: "John", age: 30);',
+            'let obj = ["name": "John", "age": 30];',
+            'let obj = "name": "John", age: 30;',
+        ],  
+    });
+    return handleAnswer(answers.question_5 == 'let obj = {name: "John", age: 30};');
+}
+
 
 async function handleAnswer(correct) {
     const spinner = createSpinner('Checking answer...').start();
@@ -121,4 +149,6 @@ await askName();
 await question1();
 await question2();
 await question3();
+await question4();
+await question_5();
 await winner();
